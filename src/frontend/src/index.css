@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    /* Cyberpunk dark palette */
+    --background: 0.11 0.015 245;
+    --foreground: 0.95 0.02 240;
+    --card: 0.14 0.018 245;
+    --card-foreground: 0.95 0.02 240;
+    --popover: 0.16 0.02 245;
+    --popover-foreground: 0.95 0.02 240;
+    /* primary = neon cyan */
+    --primary: 0.87 0.15 200;
+    --primary-foreground: 0.11 0.015 245;
+    /* secondary = dark panel */
+    --secondary: 0.18 0.02 245;
+    --secondary-foreground: 0.95 0.02 240;
+    --muted: 0.18 0.02 245;
+    --muted-foreground: 0.58 0.03 240;
+    /* accent = neon purple */
+    --accent: 0.55 0.22 280;
+    --accent-foreground: 0.95 0.02 240;
+    --destructive: 0.6 0.22 25;
+    --destructive-foreground: 0.95 0.02 240;
+    --border: 0.25 0.02 245;
+    --input: 0.2 0.02 245;
+    --ring: 0.87 0.15 200;
+    --chart-1: 0.87 0.15 200;
+    --chart-2: 0.55 0.22 280;
+    --chart-3: 0.7 0.2 30;
+    --chart-4: 0.7 0.22 140;
+    --chart-5: 0.75 0.18 320;
+    --sidebar: 0.14 0.018 245;
+    --sidebar-foreground: 0.95 0.02 240;
+    --sidebar-primary: 0.87 0.15 200;
+    --sidebar-primary-foreground: 0.11 0.015 245;
+    --sidebar-accent: 0.18 0.02 245;
+    --sidebar-accent-foreground: 0.95 0.02 240;
+    --sidebar-border: 0.25 0.02 245;
+    --sidebar-ring: 0.87 0.15 200;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Rajdhani", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Orbitron", sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(0.11 0.015 245);
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.87 0.15 200 / 40%);
+  border-radius: 3px;
+}
+
+/* Neon glow utilities */
+.glow-cyan {
+  text-shadow: 0 0 8px oklch(0.87 0.15 200 / 80%), 0 0 20px
+    oklch(0.87 0.15 200 / 40%);
+  color: oklch(0.87 0.15 200);
+}
+.glow-purple {
+  text-shadow: 0 0 8px oklch(0.55 0.22 280 / 80%), 0 0 20px
+    oklch(0.55 0.22 280 / 40%);
+  color: oklch(0.65 0.22 280);
+}
+.glow-box-cyan {
+  box-shadow: 0 0 15px oklch(0.87 0.15 200 / 40%), 0 0 40px
+    oklch(0.87 0.15 200 / 15%), inset 0 0 20px oklch(0.87 0.15 200 / 5%);
+}
+.glow-box-purple {
+  box-shadow: 0 0 15px oklch(0.55 0.22 280 / 40%), 0 0 40px
+    oklch(0.55 0.22 280 / 15%);
+}
+.glow-border-cyan {
+  border-color: oklch(0.87 0.15 200 / 60%);
+  box-shadow: 0 0 10px oklch(0.87 0.15 200 / 30%);
+}
+
+/* Grid background */
+.grid-bg {
+  background-image: linear-gradient(
+      oklch(0.25 0.02 245 / 15%) 1px,
+      transparent 1px
+    ), linear-gradient(90deg, oklch(0.25 0.02 245 / 15%) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+@keyframes neon-flicker {
+  0%,
+  95%,
+  100% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 0.8;
+  }
+  97% {
+    opacity: 1;
+  }
+  98% {
+    opacity: 0.7;
+  }
+  99% {
+    opacity: 1;
+  }
+}
+@keyframes speed-pulse {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(1.05);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+.animate-neon-flicker {
+  animation: neon-flicker 4s ease-in-out infinite;
+}
